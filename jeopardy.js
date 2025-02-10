@@ -42,7 +42,8 @@ async function fillTable() {
   for (let i = 0; i < NUM_QUESTIONS_PER_CAT; i++) {
     const row = $("<tr>");
     for (let category of categories) {
-      const cellId = `${category.title}-${i}`;
+      const safeTitle = category.title.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
+      const cellId = `${safeTitle}-${i}`;
       row.append($(`<td id="${cellId}">?</td>`));
     }
     tbody.append(row);
@@ -54,7 +55,7 @@ async function fillTable() {
 function handleClick(evt) {
   console.log('Clue clicked:', evt.target.id);
   const [categoryTitle, clueIdx] = evt.target.id.split('-');
-  const category = categories.find(cat => cat.title === categoryTitle);
+  const category = categories.find(cat => cat.title.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-') === categoryTitle);
   if (!category) {
     console.error('Category not found for title:', categoryTitle);
     return;
