@@ -2,18 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"
-  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Jeopardy</title>
-  <link href="https://fonts.googleapis.com/css?family=Copse&display=swap"
-        rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeopardy!</title>
   <link rel="stylesheet" href="jeopardy.css">
+  <script src="https://unpkg.com/jquery"></script>
+  <script src="https://unpkg.com/axios/dist/axios.js"></script>
+  <script src="https://unpkg.com/lodash"></script>
+  <script src="jeopardy.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
       margin: 20px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #0044cc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 20px 0;
+    }
+
+    button:hover {
+      background-color: #0033a0;
+    }
+
+    #loading {
+      font-weight: bold;
+      color: red;
+      display: none;
     }
 
     table {
@@ -36,27 +61,21 @@
     td {
       background-color: #e6e6e6;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
 
-    #loading {
-      font-weight: bold;
-      color: red;
+    td:hover {
+      background-color: #cccccc;
     }
   </style>
 </head>
 <body>
   <h1>Jeopardy Game</h1>
   <button id="start">Start Game</button>
-  <div id="loading" style="display:none;">Loading...</div>
+  <div id="loading">Loading...</div>
   <table id="jeopardy">
     <thead></thead>
     <tbody></tbody>
   </table>
-
-  <script src="https://unpkg.com/jquery"></script>
-  <script src="https://unpkg.com/axios/dist/axios.js"></script>
-  <script src="https://unpkg.com/lodash"></script>
-  <script src="jeopardy.js"></script>
-
 </body>
 </html>
